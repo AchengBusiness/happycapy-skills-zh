@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme:dark)">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme:light)">
+<title>HappyCapy 技能目录</title>
+<link rel="manifest" id="manifest-link">
+<style>
+:root {
+  --bg: #fff;
+  --bg2: #f5f5f5;
+  --bg3: #efefef;
+  --border: #e8e8e8;
+  --text: #1a1a1a;
+  --text2: #666;
+  --text3: #999;
+  --accent: #c8601a;
+  --accent-bg: #fff3ed;
+  --card-bg: #fff;
+  --card-shadow: 0 1px 4px rgba(0,0,0,.07);
+  --card-hover: 0 4px 16px rgba(0,0,0,.11);
+  --tag-bg: #f0f0f0;
+  --tag-text: #555;
+  --header-h: 120px;
+  --radius: 12px;
+  --gold: #c8a020;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111;
+    --bg2: #1a1a1a;
+    --bg3: #222;
+    --border: #2a2a2a;
+    --text: #f0f0f0;
+    --text2: #aaa;
+    --text3: #666;
+    --accent: #e07830;
+    --accent-bg: rgba(200,96,26,.15);
+    --card-bg: #1a1a1a;
+    --card-shadow: 0 1px 4px rgba(0,0,0,.3);
+    --card-hover: 0 4px 16px rgba(0,0,0,.5);
+    --tag-bg: #2a2a2a;
+    --tag-text: #bbb;
+    --gold: #d4a030;
+  }
+}
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html, body { height: 100%; overflow-x: hidden; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, 'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ── Header ── */
+#header {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+.header-top {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px 8px;
+  gap: 12px;
+}
+.logo-row { display: flex; align-items: center; gap: 8px; }
+.logo-icon {
+  width: 32px; height: 32px; border-radius: 8px;
+  background: linear-gradient(135deg, #c8601a, #e09030);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: #fff; flex-shrink: 0;
+}
+.logo-text { font-size: 16px; font-weight: 800; letter-spacing: -.02em; }
+.logo-text span { color: var(--accent); }
+.header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+#stats-badge {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 20px; padding: 3px 10px;
+  font-size: 12px; color: var(--text2); white-space: nowrap;
+}
+#stats-badge b { color: var(--accent); }
+
+/* Search */
+.search-wrap {
+  padding: 0 16px 10px;
+  position: relative;
+}
+#search-input {
+  width: 100%;
+  height: 40px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg2);
+  color: var(--text);
+  font-size: 14px;
+  padding: 0 12px 0 36px;
+  outline: none;
+  transition: border-color .15s;
+}
+#search-input:focus { border-color: var(--accent); }
+.search-icon {
+  position: absolute; left: 28px; top: 50%; transform: translateY(-50%);
+  color: var(--text3); font-size: 15px; pointer-events: none;
+}
+.clear-btn {
+  position: absolute; right: 28px; top: 50%; transform: translateY(-50%);
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--text3); color: var(--bg);
+  border: none; cursor: pointer; font-size: 11px;
+  display: none; align-items: center; justify-content: center;
+}
+.clear-btn.visible { display: flex; }
+
+/* Tabs */
+.tabs-wrap {
+  display: flex; align-items: center;
+  padding: 0 16px 0;
+  gap: 4px; overflow-x: auto; scrollbar-width: none;
+}
+.tabs-wrap::-webkit-scrollbar { display: none; }
+.tab-btn {
+  flex-shrink: 0; padding: 6px 12px;
+  border: none; background: transparent; cursor: pointer;
+  border-radius: 20px; font-size: 13px; font-weight: 500;
+  color: var(--text2); transition: all .15s;
+  white-space: nowrap;
+}
+.tab-btn.active {
+  background: var(--accent); color: #fff; font-weight: 700;
+}
+
+/* Official toggle */
+.filter-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 6px 16px 8px;
+}
+.official-toggle {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; color: var(--text2); cursor: pointer; user-select: none;
+}
+.toggle-switch {
+  width: 32px; height: 18px; background: var(--bg3);
+  border-radius: 9px; position: relative; transition: background .2s;
+  flex-shrink: 0;
+}
+.toggle-switch.on { background: var(--gold); }
+.toggle-switch::after {
+  content: ''; position: absolute; top: 2px; left: 2px;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #fff; transition: left .2s;
+}
+.toggle-switch.on::after { left: 16px; }
+.result-count { font-size: 12px; color: var(--text3); }
+
+/* Grid */
+#main { padding: 12px 12px; }
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+}
+@media (min-width: 480px) { .skill-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); } }
+@media (min-width: 768px) { .skill-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; } }
+@media (min-width: 1024px) { .skill-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); } }
+@media (min-width: 1400px) { .skill-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); } }
+
+/* Card */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 14px 12px;
+  display: flex; flex-direction: column; gap: 8px;
+  box-shadow: var(--card-shadow);
+  transition: box-shadow .15s, transform .15s;
+}
+@media (hover: hover) {
+  .card:hover { box-shadow: var(--card-hover); transform: translateY(-1px); }
+}
+.card-top { display: flex; align-items: center; gap: 8px; }
+.card-icon {
+  width: 36px; height: 36px; border-radius: 9px;
+  background: var(--accent-bg); color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; flex-shrink: 0; font-weight: 700;
+}
+.card-title-wrap { flex: 1; min-width: 0; }
+.card-name {
+  font-size: 14px; font-weight: 700; color: var(--text);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  line-height: 1.3;
+}
+.card-en {
+  font-size: 11px; color: var(--text3);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  margin-top: 1px;
+}
+.card-desc {
+  font-size: 12px; color: var(--text2); line-height: 1.4;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden; flex: 1;
+}
+.card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: auto;
+}
+.card-meta { display: flex; align-items: center; gap: 6px; }
+.star-badge {
+  display: flex; align-items: center; gap: 3px;
+  font-size: 11px; color: var(--gold); font-weight: 600;
+}
+.cat-chip {
+  padding: 2px 7px; border-radius: 4px;
+  font-size: 10px; font-weight: 600;
+  background: var(--tag-bg); color: var(--tag-text);
+}
+.official-badge {
+  display: flex; align-items: center; gap: 3px;
+  font-size: 10px; color: var(--gold); font-weight: 600;
+}
+.install-btn {
+  flex-shrink: 0;
+  width: 28px; height: 28px; border-radius: 7px;
+  background: var(--accent); color: #fff;
+  border: none; cursor: pointer; font-size: 16px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; transition: opacity .15s;
+}
+.install-btn:hover { opacity: .85; }
+
+/* Category colors */
+.cat-ai { background: #f0e8ff; color: #7b2fff; }
+.cat-dev { background: #e8f0ff; color: #2060d0; }
+.cat-ops { background: #e8f8f0; color: #20803a; }
+.cat-create { background: #fff0e8; color: #d06020; }
+.cat-efficiency { background: #f0f0f0; color: #606060; }
+@media (prefers-color-scheme: dark) {
+  .cat-ai { background: rgba(123,47,255,.18); color: #b070ff; }
+  .cat-dev { background: rgba(32,96,208,.18); color: #7090e0; }
+  .cat-ops { background: rgba(32,128,58,.18); color: #60c080; }
+  .cat-create { background: rgba(208,96,32,.18); color: #e09050; }
+  .cat-efficiency { background: rgba(120,120,120,.18); color: #a0a0a0; }
+}
+
+/* Pagination */
+#pagination {
+  display: flex; justify-content: center; align-items: center;
+  gap: 6px; padding: 20px 16px 24px; flex-wrap: wrap;
+}
+.page-btn {
+  min-width: 34px; height: 34px; padding: 0 8px;
+  border-radius: 8px; border: 1.5px solid var(--border);
+  background: var(--bg); color: var(--text);
+  cursor: pointer; font-size: 13px; font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .15s;
+}
+.page-btn:hover { border-color: var(--accent); color: var(--accent); }
+.page-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.page-btn:disabled { opacity: .4; cursor: not-allowed; }
+
+/* Loading */
+#loading {
+  display: none; padding: 60px; text-align: center; color: var(--text3);
+}
+#loading.show { display: block; }
+.spinner {
+  width: 32px; height: 32px; border: 3px solid var(--border);
+  border-top-color: var(--accent); border-radius: 50%;
+  animation: spin .6s linear infinite; margin: 0 auto 12px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Empty */
+#empty {
+  display: none; padding: 60px 20px; text-align: center; color: var(--text3);
+}
+#empty.show { display: block; }
+#empty-icon { font-size: 40px; margin-bottom: 12px; }
+
+/* Author footer */
+.author-footer {
+  background: var(--bg2); border-top: 1px solid var(--border);
+  padding: 16px 20px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
+}
+.author-left { display: flex; align-items: center; gap: 10px; }
+.author-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: linear-gradient(135deg, #c8601a, #e09030);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 800; color: #fff; flex-shrink: 0;
+}
+.author-name { font-size: 13px; font-weight: 700; }
+.author-sub { font-size: 11px; color: var(--text3); margin-top: 1px; }
+.author-links { display: flex; gap: 8px; }
+.author-link {
+  display: flex; align-items: center; gap: 4px;
+  padding: 5px 10px; border-radius: 7px;
+  background: var(--bg3); border: 1px solid var(--border);
+  font-size: 11px; color: var(--text2); font-weight: 600;
+  text-decoration: none; transition: all .15s;
+}
+.author-link:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Live crawl indicator */
+#crawl-bar {
+  display: none;
+  background: var(--accent-bg); border-bottom: 1px solid rgba(200,96,26,.2);
+  padding: 6px 16px;
+  font-size: 12px; color: var(--accent);
+  display: flex; align-items: center; gap: 8px;
+}
+.crawl-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent); animation: pulse 1.2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)} }
+</style>
+</head>
+<body>
+
+<div id="header">
+  <div class="header-top">
+    <div class="logo-row">
+      <div class="logo-icon">⚡</div>
+      <div class="logo-text">HappyCapy <span>技能目录</span></div>
+    </div>
+    <div class="header-actions">
+      <div id="stats-badge"><b id="total-num">...</b> 技能</div>
+    </div>
+  </div>
+
+  <div id="crawl-bar">
+    <div class="crawl-dot"></div>
+    <span id="crawl-text">正在爬取新技能...</span>
+  </div>
+
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input id="search-input" type="search" placeholder="搜索技能（中英文均可）..." autocomplete="off" autocorrect="off" spellcheck="false">
+    <button class="clear-btn" id="clear-btn" onclick="clearSearch()">✕</button>
+  </div>
+
+  <div class="tabs-wrap" id="tabs">
+    <button class="tab-btn active" data-cat="all" onclick="setTab(this)">全部</button>
+    <button class="tab-btn" data-cat="efficiency" onclick="setTab(this)">⚡ 效率工具</button>
+    <button class="tab-btn" data-cat="dev" onclick="setTab(this)">⚙ 开发编程</button>
+    <button class="tab-btn" data-cat="ai" onclick="setTab(this)">✦ AI &amp; 数据</button>
+    <button class="tab-btn" data-cat="ops" onclick="setTab(this)">☁ 系统运维</button>
+    <button class="tab-btn" data-cat="create" onclick="setTab(this)">✍ 内容创作</button>
+  </div>
+
+  <div class="filter-row">
+    <label class="official-toggle" onclick="toggleOfficial()">
+      <div class="toggle-switch" id="official-switch"></div>
+      <span>仅官方技能</span>
+    </label>
+    <span class="result-count" id="result-count"></span>
+  </div>
+</div>
+
+<div id="main">
+  <div id="loading"><div class="spinner"></div>加载中...</div>
+  <div id="empty" class="empty">
+    <div id="empty-icon">🔍</div>
+    <div>没有找到匹配的技能</div>
+    <div style="font-size:12px;margin-top:4px">试试其他关键词</div>
+  </div>
+  <div class="skill-grid" id="grid"></div>
+  <div id="pagination"></div>
+</div>
+
+<footer class="author-footer">
+  <div class="author-left">
+    <div class="author-avatar">成</div>
+    <div>
+      <div class="author-name">阿成 · ACheng</div>
+      <div class="author-sub">HappyCapy 技能中文目录 · 开源免费</div>
+    </div>
+  </div>
+  <div class="author-links">
+    <a href="https://github.com/AchengBusiness/happycapy-skills-zh" target="_blank" class="author-link">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+      GitHub
+    </a>
+    <a href="https://happycapy.ai/signup?invite_ref=aGHAUcHN" target="_blank" class="author-link">
+      ⚡ HappyCapy
+    </a>
+  </div>
+</footer>
+
+<script>
+const CAT_LABELS = {
+  all:'全部', efficiency:'效率工具', dev:'开发编程',
+  ai:'AI & 数据', ops:'系统运维', create:'内容创作'
+};
+const CAT_ICONS = {
+  efficiency:'⚡', dev:'⚙', ai:'✦', ops:'☁', create:'✍', '':'⚡'
+};
+const CAT_CLASS = {
+  efficiency:'cat-efficiency', dev:'cat-dev',
+  ai:'cat-ai', ops:'cat-ops', create:'cat-create'
+};
+
+let state = {
+  q: '', cat: 'all', official: false,
+  page: 1, total: 0, pages: 1,
+};
+let debounceTimer = null;
+
+// ── Init ──────────────────────────────────────────────────
+(async function init() {
+  setupManifest();
+  await loadStats();
+  await loadSkills();
+  setInterval(loadStats, 15000); // refresh stats every 15s
+})();
+
+function setupManifest() {
+  const manifest = {
+    name: 'HappyCapy 技能目录', short_name: '技能目录',
+    start_url: '/', display: 'standalone',
+    background_color: '#1a1a1a', theme_color: '#1a1a1a',
+    icons: [{ src: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="%23c8601a"/><text x="16" y="22" font-size="18" text-anchor="middle" fill="white">⚡</text></svg>', sizes: '192x192', type: 'image/svg+xml' }]
+  };
+  const blob = new Blob([JSON.stringify(manifest)], { type: 'application/json' });
+  document.getElementById('manifest-link').href = URL.createObjectURL(blob);
+}
+
+// ── Stats ─────────────────────────────────────────────────
+async function loadStats() {
+  try {
+    const r = await fetch('/api/stats');
+    const d = await r.json();
+    document.getElementById('total-num').textContent = d.total.toLocaleString('zh');
+
+    // Show crawl indicator if still in progress
+    const crawlBar = document.getElementById('crawl-bar');
+    if (d.crawl_progress.done < d.crawl_progress.total) {
+      crawlBar.style.display = 'flex';
+      document.getElementById('crawl-text').textContent =
+        `正在爬取新技能... 已完成 ${d.crawl_progress.done}/${d.crawl_progress.total} 轮`;
+    } else {
+      crawlBar.style.display = 'none';
+    }
+  } catch(e) {}
+}
+
+// ── Search & Filter ───────────────────────────────────────
+document.getElementById('search-input').addEventListener('input', e => {
+  const v = e.target.value;
+  document.getElementById('clear-btn').classList.toggle('visible', v.length > 0);
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(() => {
+    state.q = v;
+    state.page = 1;
+    loadSkills();
+  }, 200);
+});
+
+function clearSearch() {
+  document.getElementById('search-input').value = '';
+  document.getElementById('clear-btn').classList.remove('visible');
+  state.q = '';
+  state.page = 1;
+  loadSkills();
+}
+
+function setTab(btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  state.cat = btn.dataset.cat;
+  state.page = 1;
+  loadSkills();
+}
+
+function toggleOfficial() {
+  state.official = !state.official;
+  document.getElementById('official-switch').classList.toggle('on', state.official);
+  state.page = 1;
+  loadSkills();
+}
+
+// ── Load Skills ───────────────────────────────────────────
+let loadingId = 0;
+
+async function loadSkills() {
+  const myId = ++loadingId;
+  const grid = document.getElementById('grid');
+  const loading = document.getElementById('loading');
+  const empty = document.getElementById('empty');
+
+  loading.classList.add('show');
+  grid.innerHTML = '';
+  empty.classList.remove('show');
+  document.getElementById('pagination').innerHTML = '';
+
+  const params = new URLSearchParams({
+    q: state.q,
+    cat: state.cat,
+    official: state.official ? 1 : 0,
+    page: state.page,
+    limit: 48,
+  });
+
+  try {
+    const r = await fetch(`/api/search?${params}`);
+    if (myId !== loadingId) return;
+    const d = await r.json();
+
+    loading.classList.remove('show');
+    state.total = d.total;
+    state.pages = d.pages;
+
+    document.getElementById('result-count').textContent =
+      d.total > 0 ? `共 ${d.total.toLocaleString('zh')} 个技能` : '';
+
+    if (d.skills.length === 0) {
+      empty.classList.add('show');
+      return;
+    }
+
+    renderGrid(d.skills);
+    renderPager(d.page, d.pages);
+  } catch(e) {
+    if (myId !== loadingId) return;
+    loading.classList.remove('show');
+    grid.innerHTML = '<div style="padding:40px;text-align:center;color:var(--text3)">加载失败，请稍后重试</div>';
+  }
+}
+
+// ── Render ────────────────────────────────────────────────
+function esc(s) {
+  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function renderGrid(skills) {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = skills.map(s => {
+    const initials = (s.zh_name || s.name || '?').trim()[0] || '?';
+    const catCls = CAT_CLASS[s.cat] || 'cat-efficiency';
+    const catIcon = CAT_ICONS[s.cat] || '⚡';
+    const catLabel = CAT_LABELS[s.cat] || s.cat;
+    const stars = s.stars > 0
+      ? `<span class="star-badge">★ ${s.stars >= 1000 ? (s.stars/1000).toFixed(1)+'k' : s.stars}</span>`
+      : '';
+    const officialBadge = s.official
+      ? `<span class="official-badge">✦ 官方</span>` : '';
+
+    const installBtn = s.url
+      ? `<a href="${esc(s.url)}" target="_blank" rel="noopener" class="install-btn" title="安装">+</a>`
+      : `<span class="install-btn" style="opacity:.3;cursor:default">+</span>`;
+
+    return `<div class="card">
+  <div class="card-top">
+    <div class="card-icon">${esc(initials)}</div>
+    <div class="card-title-wrap">
+      <div class="card-name" title="${esc(s.zh_name)}">${esc(s.zh_name)}</div>
+      ${s.zh_name !== s.name ? `<div class="card-en" title="${esc(s.name)}">${esc(s.name)}</div>` : ''}
+    </div>
+  </div>
+  ${s.desc ? `<div class="card-desc">${esc(s.desc)}</div>` : ''}
+  <div class="card-footer">
+    <div class="card-meta">
+      ${stars}
+      ${officialBadge}
+      <span class="cat-chip ${catCls}">${catIcon} ${catLabel}</span>
+    </div>
+    ${installBtn}
+  </div>
+</div>`;
+  }).join('');
+}
+
+function renderPager(page, pages) {
+  if (pages <= 1) return;
+  const el = document.getElementById('pagination');
+  let html = '';
+
+  const addBtn = (label, p, disabled, active) => {
+    html += `<button class="page-btn${active?' active':''}" ${disabled?'disabled':''} onclick="gp(${p})">${label}</button>`;
+  };
+
+  addBtn('«', 1, page === 1, false);
+  addBtn('‹', page - 1, page === 1, false);
+
+  let lo = Math.max(1, page - 2), hi = Math.min(pages, page + 2);
+  if (lo > 1) html += `<span style="color:var(--text3);padding:0 2px">…</span>`;
+  for (let p = lo; p <= hi; p++) addBtn(p, p, false, p === page);
+  if (hi < pages) html += `<span style="color:var(--text3);padding:0 2px">…</span>`;
+
+  addBtn('›', page + 1, page === pages, false);
+  addBtn('»', pages, page === pages, false);
+
+  el.innerHTML = html;
+}
+
+function gp(p) {
+  state.page = p;
+  loadSkills();
+  document.getElementById('header').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
