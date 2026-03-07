@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1a1a1a">
+<title>HappyCapy 技能目录 · 中文版</title>
+<link rel="manifest" id="mf">
+<style>
+:root{--bg:#fff;--bg2:#f5f5f5;--bg3:#efefef;--border:#e8e8e8;--text:#1a1a1a;--text2:#666;--text3:#999;--accent:#c8601a;--accent-bg:#fff3ed;--card:#fff;--shadow:0 1px 4px rgba(0,0,0,.07);--hover:0 4px 16px rgba(0,0,0,.11);--gold:#c8a020;--r:12px}
+@media(prefers-color-scheme:dark){:root{--bg:#111;--bg2:#1a1a1a;--bg3:#222;--border:#2a2a2a;--text:#f0f0f0;--text2:#aaa;--text3:#666;--accent:#e07830;--accent-bg:rgba(200,96,26,.15);--card:#1a1a1a;--shadow:0 1px 4px rgba(0,0,0,.3);--hover:0 4px 16px rgba(0,0,0,.5);--gold:#d4a030}}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,'PingFang SC','Noto Sans SC','Microsoft YaHei',sans-serif;font-size:14px;line-height:1.5}
+#hd{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border)}
+.ht{display:flex;align-items:center;justify-content:space-between;padding:12px 16px 8px;gap:12px}
+.logo{display:flex;align-items:center;gap:8px}
+.logo-ic{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#c8601a,#e09030);display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;flex-shrink:0}
+.logo-tx{font-size:16px;font-weight:800;letter-spacing:-.02em}
+.logo-tx span{color:var(--accent)}
+#badge{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:3px 10px;font-size:12px;color:var(--text2);white-space:nowrap}
+#badge b{color:var(--accent)}
+.sw{padding:0 16px 10px;position:relative}
+#si{width:100%;height:40px;border:1.5px solid var(--border);border-radius:10px;background:var(--bg2);color:var(--text);font-size:14px;padding:0 36px 0 36px;outline:none;transition:border-color .15s}
+#si:focus{border-color:var(--accent)}
+.sic{position:absolute;left:28px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:15px;pointer-events:none}
+#clr{position:absolute;right:28px;top:50%;transform:translateY(-50%);width:18px;height:18px;border-radius:50%;background:var(--text3);color:var(--bg);border:none;cursor:pointer;font-size:11px;display:none;align-items:center;justify-content:center}
+#clr.v{display:flex}
+.tabs{display:flex;align-items:center;padding:0 16px;gap:4px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tb{flex-shrink:0;padding:6px 12px;border:none;background:transparent;cursor:pointer;border-radius:20px;font-size:13px;font-weight:500;color:var(--text2);transition:all .15s;white-space:nowrap}
+.tb.on{background:var(--accent);color:#fff;font-weight:700}
+.fr{display:flex;align-items:center;justify-content:space-between;padding:6px 16px 8px}
+.tog{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);cursor:pointer;user-select:none}
+.tsw{width:32px;height:18px;background:var(--bg3);border-radius:9px;position:relative;transition:background .2s;flex-shrink:0}
+.tsw.on{background:var(--gold)}
+.tsw::after{content:'';position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#fff;transition:left .2s}
+.tsw.on::after{left:16px}
+#rc{font-size:12px;color:var(--text3)}
+#main{padding:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+@media(min-width:480px){.grid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}}
+@media(min-width:768px){.grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}}
+@media(min-width:1024px){.grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}}
+@media(min-width:1400px){.grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px 14px 12px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow);transition:box-shadow .15s,transform .15s}
+@media(hover:hover){.card:hover{box-shadow:var(--hover);transform:translateY(-1px)}}
+.ct{display:flex;align-items:center;gap:8px}
+.ci{width:36px;height:36px;border-radius:9px;background:var(--accent-bg);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;font-weight:700}
+.ctw{flex:1;min-width:0}
+.cn{font-size:14px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.3}
+.ce{font-size:11px;color:var(--text3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+.cd{font-size:12px;color:var(--text2);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1}
+.cf{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+.cm{display:flex;align-items:center;gap:6px}
+.sb{display:flex;align-items:center;gap:3px;font-size:11px;color:var(--gold);font-weight:600}
+.ch{padding:2px 7px;border-radius:4px;font-size:10px;font-weight:600;background:var(--bg3);color:var(--text3)}
+.ob{display:flex;align-items:center;gap:3px;font-size:10px;color:var(--gold);font-weight:600}
+.ib{flex-shrink:0;width:28px;height:28px;border-radius:7px;background:var(--accent);color:#fff;border:none;cursor:pointer;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:opacity .15s}
+.ib:hover{opacity:.85}
+.cat-ai{background:#f0e8ff;color:#7b2fff}
+.cat-dev{background:#e8f0ff;color:#2060d0}
+.cat-ops{background:#e8f8f0;color:#20803a}
+.cat-create{background:#fff0e8;color:#d06020}
+.cat-efficiency{background:#f0f0f0;color:#606060}
+@media(prefers-color-scheme:dark){
+.cat-ai{background:rgba(123,47,255,.18);color:#b070ff}
+.cat-dev{background:rgba(32,96,208,.18);color:#7090e0}
+.cat-ops{background:rgba(32,128,58,.18);color:#60c080}
+.cat-create{background:rgba(208,96,32,.18);color:#e09050}
+.cat-efficiency{background:rgba(120,120,120,.18);color:#a0a0a0}}
+#pg{display:flex;justify-content:center;align-items:center;gap:6px;padding:20px 16px 24px;flex-wrap:wrap}
+.pb{min-width:34px;height:34px;padding:0 8px;border-radius:8px;border:1.5px solid var(--border);background:var(--bg);color:var(--text);cursor:pointer;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.pb:hover{border-color:var(--accent);color:var(--accent)}
+.pb.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.pb:disabled{opacity:.4;cursor:not-allowed}
+#ld{padding:60px;text-align:center;color:var(--text3)}
+.sp{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .6s linear infinite;margin:0 auto 12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+#em{display:none;padding:60px 20px;text-align:center;color:var(--text3)}
+#em.show{display:block}
+.af{background:var(--bg2);border-top:1px solid var(--border);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.al{display:flex;align-items:center;gap:10px}
+.aa{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#c8601a,#e09030);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:#fff;flex-shrink:0}
+.an{font-size:13px;font-weight:700}
+.as{font-size:11px;color:var(--text3);margin-top:1px}
+.alk{display:flex;gap:8px}
+.alk a{display:flex;align-items:center;gap:4px;padding:5px 10px;border-radius:7px;background:var(--bg3);border:1px solid var(--border);font-size:11px;color:var(--text2);font-weight:600;text-decoration:none;transition:all .15s}
+.alk a:hover{border-color:var(--accent);color:var(--accent)}
+#progress-wrap{background:var(--accent-bg);border-bottom:1px solid rgba(200,96,26,.2);padding:8px 16px;font-size:12px;color:var(--accent);display:flex;align-items:center;gap:10px}
+.progress-bar-outer{flex:1;height:6px;background:rgba(200,96,26,.15);border-radius:3px;overflow:hidden}
+.progress-bar-inner{height:100%;background:var(--accent);border-radius:3px;transition:width .3s}
+</style>
+</head>
+<body>
+<div id="hd">
+  <div class="ht">
+    <div class="logo">
+      <div class="logo-ic">⚡</div>
+      <div class="logo-tx">HappyCapy <span>技能目录</span></div>
+    </div>
+    <div id="badge"><b id="tn">加载中...</b> 技能</div>
+  </div>
+
+  <div id="progress-wrap">
+    <span id="progress-text">正在加载技能数据...</span>
+    <div class="progress-bar-outer"><div class="progress-bar-inner" id="pbar" style="width:0%"></div></div>
+  </div>
+
+  <div class="sw">
+    <span class="sic">🔍</span>
+    <input id="si" type="search" placeholder="搜索技能（中英文均可）..." autocomplete="off" spellcheck="false">
+    <button class="ib" id="clr" onclick="clearQ()" style="background:var(--text3);width:18px;height:18px;font-size:11px;border-radius:50%">✕</button>
+  </div>
+
+  <div class="tabs" id="tabs">
+    <button class="tb on" data-cat="all" onclick="setTab(this)">全部</button>
+    <button class="tb" data-cat="efficiency" onclick="setTab(this)">⚡ 效率工具</button>
+    <button class="tb" data-cat="dev" onclick="setTab(this)">⚙ 开发编程</button>
+    <button class="tb" data-cat="ai" onclick="setTab(this)">✦ AI &amp; 数据</button>
+    <button class="tb" data-cat="ops" onclick="setTab(this)">☁ 系统运维</button>
+    <button class="tb" data-cat="create" onclick="setTab(this)">✍ 内容创作</button>
+  </div>
+
+  <div class="fr">
+    <label class="tog" onclick="toggleOff()">
+      <div class="tsw" id="tsw"></div>
+      <span>仅官方技能</span>
+    </label>
+    <span id="rc"></span>
+  </div>
+</div>
+
+<div id="main">
+  <div id="ld"><div class="sp"></div><div id="ld-text">正在从 GitHub 拉取数据...</div></div>
+  <div id="em"><div style="font-size:40px;margin-bottom:12px">🔍</div><div>没有找到匹配的技能</div><div style="font-size:12px;margin-top:4px">试试其他关键词</div></div>
+  <div class="grid" id="grid"></div>
+  <div id="pg"></div>
+</div>
+
+<footer class="af">
+  <div class="al">
+    <div class="aa">成</div>
+    <div>
+      <div class="an">阿成 · ACheng</div>
+      <div class="as">HappyCapy 技能中文目录 · 开源免费</div>
+    </div>
+  </div>
+  <div class="alk">
+    <a href="https://github.com/AchengBusiness/happycapy-skills-zh" target="_blank">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+      GitHub
+    </a>
+    <a href="https://happycapy.ai/signup?invite_ref=aGHAUcHN" target="_blank">⚡ HappyCapy</a>
+  </div>
+</footer>
+
+<script>
+// ── 数据来源：GitHub CDN ──────────────────────────────────
+const DATA_URL = 'https://cdn.jsdelivr.net/gh/AchengBusiness/happycapy-skills-zh@main/skills.json.gz';
+const FALLBACK_URL = 'https://raw.githubusercontent.com/AchengBusiness/happycapy-skills-zh/main/skills.json.gz';
+
+const CAT_LABELS = {all:'全部',efficiency:'效率工具',dev:'开发编程',ai:'AI & 数据',ops:'系统运维',create:'内容创作'};
+const CAT_ICONS  = {efficiency:'⚡',dev:'⚙',ai:'✦',ops:'☁',create:'✍'};
+const CAT_CLS    = {efficiency:'cat-efficiency',dev:'cat-dev',ai:'cat-ai',ops:'cat-ops',create:'cat-create'};
+
+// SK: [name, zh_name, author, desc, stars, cat, official, url]
+const F = {NAME:0,ZH:1,AUTH:2,DESC:3,STARS:4,CAT:5,OFF:6,URL:7};
+
+let ALL = [];          // full dataset
+let FILTERED = [];     // after search+filter
+let state = {q:'',cat:'all',off:false,page:1};
+const PER_PAGE = 48;
+let timer = null;
+
+// ── PWA manifest ─────────────────────────────────────────
+(function(){
+  const m={name:'HappyCapy技能目录',short_name:'技能目录',start_url:'.',display:'standalone',
+    background_color:'#1a1a1a',theme_color:'#1a1a1a',
+    icons:[{src:'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="%23c8601a"/><text x="16" y="22" font-size="18" text-anchor="middle" fill="white">⚡</text></svg>',sizes:'192x192',type:'image/svg+xml'}]};
+  const b=new Blob([JSON.stringify(m)],{type:'application/json'});
+  document.getElementById('mf').href=URL.createObjectURL(b);
+})();
+
+// ── Load data ─────────────────────────────────────────────
+async function loadData() {
+  const ldText = document.getElementById('ld-text');
+  const pbar   = document.getElementById('pbar');
+  const pw     = document.getElementById('progress-wrap');
+  const ptxt   = document.getElementById('progress-text');
+
+  // Try fetch with streaming progress
+  async function tryFetch(url) {
+    const r = await fetch(url);
+    if (!r.ok) throw new Error(r.status);
+    const total = parseInt(r.headers.get('content-length') || '0');
+    const reader = r.body.getReader();
+    const chunks = [];
+    let received = 0;
+    while (true) {
+      const {done, value} = await reader.read();
+      if (done) break;
+      chunks.push(value);
+      received += value.length;
+      if (total > 0) {
+        const pct = Math.round(received * 80 / total);
+        pbar.style.width = pct + '%';
+        ldText.textContent = `正在下载数据... ${Math.round(received/1024)}KB`;
+      }
+    }
+    // Combine chunks
+    const total_len = chunks.reduce((s, c) => s + c.length, 0);
+    const combined = new Uint8Array(total_len);
+    let offset = 0;
+    for (const c of chunks) { combined.set(c, offset); offset += c.length; }
+    return combined;
+  }
+
+  let raw;
+  try {
+    ldText.textContent = '正在从 jsDelivr CDN 拉取...';
+    ptxt.textContent = '正在加载...';
+    raw = await tryFetch(DATA_URL);
+  } catch(e) {
+    try {
+      ldText.textContent = '切换到 GitHub 直连...';
+      raw = await tryFetch(FALLBACK_URL);
+    } catch(e2) {
+      ldText.textContent = '加载失败，请刷新重试';
+      return;
+    }
+  }
+
+  // Decompress gzip in browser
+  pbar.style.width = '85%';
+  ldText.textContent = '正在解压数据...';
+  ptxt.textContent = '解压中...';
+
+  try {
+    const ds = new DecompressionStream('gzip');
+    const writer = ds.writable.getWriter();
+    writer.write(raw);
+    writer.close();
+    const decompressed = await new Response(ds.readable).text();
+
+    pbar.style.width = '95%';
+    ldText.textContent = '正在解析数据...';
+    const json = JSON.parse(decompressed);
+    ALL = json.skills || [];
+
+    pbar.style.width = '100%';
+    document.getElementById('ld').style.display = 'none';
+    pw.style.display = 'none';
+
+    document.getElementById('tn').textContent = ALL.length.toLocaleString('zh');
+    applyFilter();
+  } catch(e) {
+    ldText.textContent = '解压失败: ' + e.message;
+  }
+}
+
+// ── Filter & Search ───────────────────────────────────────
+function applyFilter() {
+  const q = state.q.toLowerCase().trim();
+  const cat = state.cat;
+  const off = state.off;
+
+  FILTERED = ALL.filter(s => {
+    if (cat !== 'all' && s[F.CAT] !== cat) return false;
+    if (off && !s[F.OFF]) return false;
+    if (q) {
+      return s[F.ZH].toLowerCase().includes(q) ||
+             s[F.NAME].toLowerCase().includes(q) ||
+             s[F.DESC].toLowerCase().includes(q) ||
+             s[F.AUTH].toLowerCase().includes(q);
+    }
+    return true;
+  });
+
+  state.page = 1;
+  const total = FILTERED.length;
+  document.getElementById('rc').textContent = total > 0 ? `共 ${total.toLocaleString('zh')} 个技能` : '';
+
+  const em = document.getElementById('em');
+  em.classList.toggle('show', total === 0 && state.q !== '');
+
+  renderPage();
+}
+
+document.getElementById('si').addEventListener('input', e => {
+  const v = e.target.value;
+  document.getElementById('clr').classList.toggle('v', v.length > 0);
+  clearTimeout(timer);
+  timer = setTimeout(() => { state.q = v; applyFilter(); }, 150);
+});
+
+function clearQ() {
+  document.getElementById('si').value = '';
+  document.getElementById('clr').classList.remove('v');
+  state.q = '';
+  applyFilter();
+}
+
+function setTab(btn) {
+  document.querySelectorAll('.tb').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  state.cat = btn.dataset.cat;
+  applyFilter();
+}
+
+function toggleOff() {
+  state.off = !state.off;
+  document.getElementById('tsw').classList.toggle('on', state.off);
+  applyFilter();
+}
+
+// ── Render ────────────────────────────────────────────────
+function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') }
+
+function renderPage() {
+  const start = (state.page - 1) * PER_PAGE;
+  const slice = FILTERED.slice(start, start + PER_PAGE);
+  const grid  = document.getElementById('grid');
+
+  if (slice.length === 0 && state.q === '') {
+    grid.innerHTML = '';
+    return;
+  }
+
+  grid.innerHTML = slice.map(s => {
+    const zh   = s[F.ZH] || s[F.NAME] || '?';
+    const init = zh.trim()[0] || '?';
+    const cat  = s[F.CAT] || 'efficiency';
+    const cls  = CAT_CLS[cat]   || 'cat-efficiency';
+    const icon = CAT_ICONS[cat] || '⚡';
+    const lbl  = CAT_LABELS[cat]|| cat;
+    const stars = s[F.STARS] > 0
+      ? `<span class="sb">★ ${s[F.STARS]>=1000?(s[F.STARS]/1000).toFixed(1)+'k':s[F.STARS]}</span>` : '';
+    const off = s[F.OFF] ? `<span class="ob">✦ 官方</span>` : '';
+    const btn = s[F.URL]
+      ? `<a href="${esc(s[F.URL])}" target="_blank" rel="noopener" class="ib" title="安装">+</a>`
+      : `<span class="ib" style="opacity:.3;cursor:default">+</span>`;
+    return `<div class="card">
+  <div class="ct"><div class="ci">${esc(init)}</div>
+    <div class="ctw">
+      <div class="cn" title="${esc(zh)}">${esc(zh)}</div>
+      ${zh!==s[F.NAME]?`<div class="ce">${esc(s[F.NAME])}</div>`:''}
+    </div></div>
+  ${s[F.DESC]?`<div class="cd">${esc(s[F.DESC])}</div>`:''}
+  <div class="cf"><div class="cm">${stars}${off}<span class="ch ${cls}">${icon} ${lbl}</span></div>${btn}</div>
+</div>`;
+  }).join('');
+
+  renderPager();
+}
+
+function renderPager() {
+  const pages = Math.ceil(FILTERED.length / PER_PAGE);
+  if (pages <= 1) { document.getElementById('pg').innerHTML = ''; return; }
+  const p = state.page;
+  let h = '';
+  const btn = (lbl, pg, dis, on) =>
+    `<button class="pb${on?' on':''}" ${dis?'disabled':''} onclick="gp(${pg})">${lbl}</button>`;
+  h += btn('«',1,p===1,false); h += btn('‹',p-1,p===1,false);
+  let lo=Math.max(1,p-2), hi=Math.min(pages,p+2);
+  if(lo>1) h+=`<span style="color:var(--text3);padding:0 2px">…</span>`;
+  for(let i=lo;i<=hi;i++) h+=btn(i,i,false,i===p);
+  if(hi<pages) h+=`<span style="color:var(--text3);padding:0 2px">…</span>`;
+  h += btn('›',p+1,p===pages,false); h += btn('»',pages,p===pages,false);
+  document.getElementById('pg').innerHTML = h;
+}
+
+function gp(p) {
+  state.page = p;
+  renderPage();
+  document.getElementById('hd').scrollIntoView({behavior:'smooth'});
+}
+
+// ── Start ─────────────────────────────────────────────────
+loadData();
+</script>
+</body>
+</html>
